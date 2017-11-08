@@ -12,11 +12,13 @@ class Engine
     event = Event.new
     score = 0
   	while true
-      puts "current score: #{score}"
-      puts "Snake position: x:#{snake.position[0][:x]} y:#{snake.position[0][:y]}"
-      puts "Apple position: x:#{apple.position[:x]} y:#{apple.position[:y]}"
+      
   	  # Le a entrada do usuario	
   	  movement = read_movement
+      
+      # para de executar o programa caso algo alem das setinhas seja recebido
+      break if movement == "quit"   
+
       snake.move movement
       
       if event.snakeAteApple? snake.position, apple.position
@@ -24,8 +26,15 @@ class Engine
         apple.generate_apple
       end
 
-  	  # para de executar o programa caso algo alem das setinhas seja recebido
-   	  break if movement == "quit"   
+      if event.snakeHitWall? snake.position
+        puts "GAME OVER"
+        puts "Final Score: #{score}"
+        break
+      end
+
+      puts "current score: #{score}"
+      puts "Snake position: x:#{snake.position[0][:x]} y:#{snake.position[0][:y]}"
+      puts "Apple position: x:#{apple.position[:x]} y:#{apple.position[:y]}"
    	  # desenha um novo frame
    	  screen.draw snake.position, apple.position
 	  end
