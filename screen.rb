@@ -23,4 +23,3 @@ class Screen
   	puts "-----"
   end 
 end
-
