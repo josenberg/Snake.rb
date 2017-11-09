@@ -23,6 +23,7 @@ class Engine
       
       if event.snakeAteApple? snake.position, apple.position
         score += 1
+        snake.grow
         apple.generate_apple
       end
 

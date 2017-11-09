@@ -1,5 +1,10 @@
 class Snake
 	attr_accessor :position
+	attr_accessor :size_to_increase
+
+	def grow 
+		self.size_to_increase += 1
+	end
 	def move direction
 		new_position = {:x => self.position[0][:x], :y => self.position[0][:y]}
 		case direction
@@ -14,11 +19,16 @@ class Snake
   		end
 
   		self.position.unshift (new_position)
-  		self.position.pop
+  		if self.size_to_increase == 0
+  			self.position.pop 
+  		else
+  			self.size_to_increase -= 1
+  		end
 	end
 	def initialize 
 		# inicializa a snake com 
 		# uma posição no meio da tela
 		self.position = [{:x => 5, :y => 5}]
+		self.size_to_increase = 0;
 	end
 end
