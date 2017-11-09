@@ -27,7 +27,7 @@ class Engine
         apple.generate_apple
       end
 
-      if event.snakeHitWall? snake.position
+      if (event.snakeHitWall? snake.position) || (event.snakeAteItsefl? snake.position)
         puts "GAME OVER"
         puts "Final Score: #{score}"
         break
