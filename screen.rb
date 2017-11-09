@@ -11,9 +11,9 @@ class Screen
   	10.times do |i| 
 		10.times do  |j|
 			if (self.is_snake? snake_positions, j, i)
-				print "[0]"
+				print "[\e[32m0\e[0m]"
 			elsif (self.is_apple? apple_position, j, i)
-				print "[X]"
+				print "[\e[31mX\e[0m]"
 			else 
 				print "[ ]"
 			end
